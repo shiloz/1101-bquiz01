@@ -43,22 +43,47 @@ class DB{
         return $this->pdo->query($sql)->fetchAll();
 
     }
+
+    public function count(...$arg){
+        $sql="select count(*) from $this->table ";
+
+        if(isset($arg[0])){
+            if(is_array($arg[0])){
+                foreach($arg[0] as $key => $value){
+                    $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                }
+                    $sql=$sql . " where " . implode(" && ",$tmp);
+            }else{
+ 
+                $sql=$sql . $arg[0];
+            }
+
+            if(isset($arg[1])){
+                 $sql=$sql . $arg[1];
+            }
+        }
+
+        echo $sql;
+        return $this->pdo->query($sql)->fetchColumn();
+
+    }
+
 }
 
 $User=new DB("user");
 
 
 echo "<pre>";
-print_r($User->all(['visible'=>'Y']));
-echo "</pre>";
-
-/* echo "<pre>";
-print_r($User->all(" where name='amy' "));
+print_r($User->count());
 echo "</pre>";
 
 echo "<pre>";
-print_r($User->all(" where `visible`='Y' " , " order by `id` DESC"));
-echo "</pre>"; */
+print_r($User->count(" where name='amy' "));
+echo "</pre>";
+
+echo "<pre>";
+print_r($User->count(" where `visible`='Y' " , " order by `id` DESC"));
+echo "</pre>";
 
 
 
