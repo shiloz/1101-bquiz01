@@ -102,13 +102,39 @@ class DB{
 
     }
 
+
+    public function save($array){
+        if(isset($array['id'])){
+            //update
+                foreach($array as $key => $value){
+                    $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                }
+
+            $sql="update $this->table set ".implode(',',$tmp)." where `id`='{$array['id']}'";
+        }else{
+            //insert
+
+
+            $sql="insert into $this->table () values()";
+        }
+
+        echo $sql;
+        return $this->pdo->exec($sql);
+    }
+
 }
 
 $Store=new DB("stories");
 
 
 echo "<pre>";
-print_r($Store->del(['intro_chinese'=>'123']));
+print_r($Store->save(['intro_chinese'=>'載客人的',
+                       'id'=>9,
+                       'name'=>'台灣大車隊',
+                       'file'=>'bg05.jpg',
+                       'intro_english'=>"take someone to anywhere",
+                       'visible'=>'Y'
+                    ]));
 echo "</pre>";
 
 /* echo "<pre>";
