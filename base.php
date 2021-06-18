@@ -15,21 +15,45 @@ class DB{
 
     public function all(...$arg){
         $sql="select * from $this->table ";
+        // $arg=[]  or [陣列],[SQL字串],[陣列,SQL字串],
 
-        
+        if(isset($arg[0])){
+            if(is_array($arg[0])){
+                    echo "處理陣列";
+            }else{
+                //當它是字串
+                $sql=$sql . $arg[0];
+            }
+
+            if(isset($arg[1])){
+                //當它是字串
+                $sql=$sql . $arg[1];
+            }
+
+        }
+
+        //echo $sql;
         return $this->pdo->query($sql)->fetchAll();
 
     }
 }
 
-$db=new DB("user");
+$User=new DB("user");
+
+
 echo "<pre>";
-print_r($db->all());
+print_r($User->all());
+echo "</pre>";
+
+echo "<pre>";
+print_r($User->all(" where name='amy' "));
+echo "</pre>";
+
+echo "<pre>";
+print_r($User->all(" where `visible`='Y' " , " order by `id` DESC"));
 echo "</pre>";
 
 
-$db2=new DB("stories");
-echo "<pre>";
-print_r($db2->all());
-echo "</pre>";
+
+
 ?>
