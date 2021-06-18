@@ -67,6 +67,24 @@ class DB{
         return $this->pdo->query($sql)->fetchColumn();
 
     }
+    public function find($id){
+        $sql="select * from $this->table ";
+
+        
+            if(is_array($id)){
+                foreach($id as $key => $value){
+                    $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                }
+                    $sql=$sql . " where " . implode(" && ",$tmp);
+            }else{
+ 
+                $sql=$sql . " where `id`='$id'";
+            }
+
+        echo $sql;
+        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+
+    }
 
 }
 
@@ -74,17 +92,17 @@ $User=new DB("user");
 
 
 echo "<pre>";
-print_r($User->count());
+print_r($User->find(['level'=>2,'visible'=>"N"]));
 echo "</pre>";
 
-echo "<pre>";
+/* echo "<pre>";
 print_r($User->count(" where name='amy' "));
 echo "</pre>";
 
 echo "<pre>";
 print_r($User->count(" where `visible`='Y' " , " order by `id` DESC"));
 echo "</pre>";
-
+ */
 
 
 
