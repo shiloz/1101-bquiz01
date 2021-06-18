@@ -63,7 +63,7 @@ class DB{
             }
         }
 
-        echo $sql;
+        //echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
 
     }
@@ -81,7 +81,7 @@ class DB{
                 $sql=$sql . " where `id`='$id'";
             }
 
-        echo $sql;
+        //echo $sql;
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
     }
@@ -97,7 +97,7 @@ class DB{
                 $sql=$sql . " where `id`='$id'";
             }
 
-        echo $sql;
+        //echo $sql;
         return $this->pdo->exec($sql);
 
     }
@@ -115,29 +115,30 @@ class DB{
             $sql="update $this->table set ".implode(',',$tmp)." where `id`='{$array['id']}'";
         }else{
             //insert
-
-
-            $sql="insert into $this->table () values()";
+            // `name`,`addr`,`tel`
+            $sql="insert into $this->table 
+                    (`".implode("`,`",array_keys($array))."`) values
+                    ('".implode("','",$array)."')";
         }
 
-        echo $sql;
+        //echo $sql;
         return $this->pdo->exec($sql);
     }
 
 }
 
-$Store=new DB("stories");
+/* $Store=new DB("stories");
 
 
 echo "<pre>";
-print_r($Store->save(['intro_chinese'=>'載客人的',
-                       'id'=>9,
-                       'name'=>'台灣大車隊',
-                       'file'=>'bg05.jpg',
-                       'intro_english'=>"take someone to anywhere",
+print_r($Store->save([
+                       'name'=>'Uber Eat',
+                       'intro_chinese'=>'吳伯益',
+                       'file'=>'bg06.jpg',
+                       'intro_english'=>"buy something good to eat",
                        'visible'=>'Y'
                     ]));
-echo "</pre>";
+echo "</pre>"; */
 
 /* echo "<pre>";
 print_r($User->count(" where name='amy' "));
