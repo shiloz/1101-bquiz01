@@ -15,21 +15,52 @@ class DB{
 
     public function all(...$arg){
         $sql="select * from $this->table ";
+        // $arg=[]  or [陣列],[SQL字串],[陣列,SQL字串],
 
-        
+        if(isset($arg[0])){
+            if(is_array($arg[0])){
+                //["欄位"=>"值","欄位"=>"值"]
+                //where `欄位`='值' && `欄位`='值'
+                //"欄位"=>"值" ====> `欄位`='值'
+
+                foreach($arg[0] as $key => $value){
+                    $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                }
+                    $sql=$sql . " where " . implode(" && ",$tmp);
+            }else{
+                //當它是字串
+                $sql=$sql . $arg[0];
+            }
+
+            if(isset($arg[1])){
+                //當它是字串
+                $sql=$sql . $arg[1];
+            }
+
+        }
+
+        //echo $sql;
         return $this->pdo->query($sql)->fetchAll();
 
     }
 }
 
-$db=new DB("user");
-echo "<pre>";
-print_r($db->all());
-echo "</pre>";
+$User=new DB("user");
 
 
-$db2=new DB("stories");
 echo "<pre>";
-print_r($db2->all());
+print_r($User->all(['visible'=>'Y']));
 echo "</pre>";
+
+/* echo "<pre>";
+print_r($User->all(" where name='amy' "));
+echo "</pre>";
+
+echo "<pre>";
+print_r($User->all(" where `visible`='Y' " , " order by `id` DESC"));
+echo "</pre>"; */
+
+
+
+
 ?>
