@@ -63,7 +63,7 @@ class DB{
             }
         }
 
-        echo $sql;
+        //echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
 
     }
@@ -81,19 +81,69 @@ class DB{
                 $sql=$sql . " where `id`='$id'";
             }
 
-        echo $sql;
+        //echo $sql;
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
+    }
+    public function del($id){
+        $sql="delete from $this->table ";
+            if(is_array($id)){
+                foreach($id as $key => $value){
+                    $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                }
+                    $sql=$sql . " where " . implode(" && ",$tmp);
+            }else{
+ 
+                $sql=$sql . " where `id`='$id'";
+            }
+
+        //echo $sql;
+        return $this->pdo->exec($sql);
+
+    }
+
+
+    public function save($array){
+        if(isset($array['id'])){
+            //update
+                foreach($array as $key => $value){
+                    if($key!='id'){
+                        $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                    }
+                }
+
+            $sql="update $this->table set ".implode(',',$tmp)." where `id`='{$array['id']}'";
+        }else{
+            //insert
+            // `name`,`addr`,`tel`
+            $sql="insert into $this->table 
+                    (`".implode("`,`",array_keys($array))."`) values
+                    ('".implode("','",$array)."')";
+        }
+
+        //echo $sql;
+        return $this->pdo->exec($sql);
     }
 
 }
 
-$User=new DB("user");
+function to($url){
+    header("location:".$url);
+}
+
+
+/* $Store=new DB("stories");
 
 
 echo "<pre>";
-print_r($User->find(['level'=>2,'visible'=>"N"]));
-echo "</pre>";
+print_r($Store->save([
+                       'name'=>'Uber Eat',
+                       'intro_chinese'=>'吳伯益',
+                       'file'=>'bg06.jpg',
+                       'intro_english'=>"buy something good to eat",
+                       'visible'=>'Y'
+                    ]));
+echo "</pre>"; */
 
 /* echo "<pre>";
 print_r($User->count(" where name='amy' "));
@@ -103,7 +153,5 @@ echo "<pre>";
 print_r($User->count(" where `visible`='Y' " , " order by `id` DESC"));
 echo "</pre>";
  */
-
-
 
 ?>
