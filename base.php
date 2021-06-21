@@ -32,7 +32,7 @@ $hs=[
         "menu"=>"選單"
     ]; 
 class DB{
-    private $dsn="mysql:host=localhost;charset=utf8;dbname=db_story";
+    private $dsn="mysql:host=localhost;charset=utf8;dbname=db01";
     private $root='root';
     private $password='12345';
     private $table;
@@ -160,6 +160,9 @@ class DB{
 function to($url){
     header("location:".$url);
 }
+
+ $Total=new DB('total');
+
 
 
 ?>
