@@ -28,6 +28,7 @@ $hs=[
         'mvim'=>"動畫圖片",
         "image"=>"校園映像資料",
         "total"=>"進站總人數：",
+        "bottom"=>"頁尾版權資料：",
         "news"=>"最新消息資料",
         "admin"=>"管理者帳號",
         "menu"=>"選單"
@@ -163,6 +164,7 @@ function to($url){
 }
 
  $Total=new DB('total');
+ $Bottom=new DB('bottom');
 
 
 
