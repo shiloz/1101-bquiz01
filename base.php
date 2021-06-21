@@ -1,6 +1,36 @@
 <?php
-
-
+session_start();
+date_default_timezone_set("Asia/Taipei");
+//設定後台的抬頭文字
+$ts=[
+        "title"=>"網站標題管理",
+        "ad"=>"動態文字廣告管理",
+        'mvim'=>"動畫圖片管理",
+        "image"=>"校園映像資料管理",
+        "total"=>"進站總人數管理",
+        "bottom"=>"頁尾版權資料管理",
+        "news"=>"最新消息資料管理",
+        "admin"=>"管理者帳號管理",
+        "menu"=>"選單管理"
+    ]; 
+$as=[
+        "title"=>"新增網站標題",
+        "ad"=>"新增動態文字廣告",
+        'mvim'=>"新增動畫圖片",
+        "image"=>"新增校園映像資料",
+        "news"=>"新增最新消息資料",
+        "admin"=>"新增管理者帳號",
+        "menu"=>"新增選單"
+    ]; 
+$hs=[
+        "title"=>"網站標題",
+        "ad"=>"動態文字廣告",
+        'mvim'=>"動畫圖片",
+        "image"=>"校園映像資料",
+        "news"=>"最新消息資料",
+        "admin"=>"管理者帳號",
+        "menu"=>"選單"
+    ]; 
 class DB{
     private $dsn="mysql:host=localhost;charset=utf8;dbname=db_story";
     private $root='root';
@@ -131,27 +161,5 @@ function to($url){
     header("location:".$url);
 }
 
-
-/* $Store=new DB("stories");
-
-
-echo "<pre>";
-print_r($Store->save([
-                       'name'=>'Uber Eat',
-                       'intro_chinese'=>'吳伯益',
-                       'file'=>'bg06.jpg',
-                       'intro_english'=>"buy something good to eat",
-                       'visible'=>'Y'
-                    ]));
-echo "</pre>"; */
-
-/* echo "<pre>";
-print_r($User->count(" where name='amy' "));
-echo "</pre>";
-
-echo "<pre>";
-print_r($User->count(" where `visible`='Y' " , " order by `id` DESC"));
-echo "</pre>";
- */
 
 ?>
