@@ -25,3 +25,4 @@ foreach($ids as $key => $id){
 }
 
 to("../backend.php?do=title");
+?>
