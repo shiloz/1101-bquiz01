@@ -1,28 +1,31 @@
 <?php  include_once "../base.php";
 
+$table=$_POST['table'];
+$db=new DB($table);
 $texts=$_POST['text'];
 $ids=$_POST['id'];
 
 foreach($ids as $key => $id){
 
     if(isset($_POST['del']) && in_array($id,$_POST['del'])){
-        $Title->del($id);
+        $db->del($id);
     }else{
 
-        $row=$Title->find($id);
+        $row=$db->find($id);
         $row['text']=$texts[$key];
-        $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
 
-/*         if(isset($_POST['sh']) && $_POST['sh']==$id){
-            $row['sh']=1;
-        }else{
-            $row['sh']=0;
-        } */
-    
-        $Title->save($row);
+        switch($table){
+            case 'title';
+                $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
+            break;
+            default:
+                $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
 
+        }
+
+        $db->save($row);
     }
 }
 
-to("../backend.php?do=title");
+to("../backend.php?do=".$table);
 ?>
