@@ -21,16 +21,18 @@
                         <img src="img/<?=$value['img'];?>" style="width:300px;height:30px;">
                     </td>
                     <td width="23%">
-                        <input type="text" name="text" value="<?=$value['text'];?>">
+                        <input type="text" name='text[]' value="<?=$value['text'];?>">
                     </td>
                     <td width="7%">
-                        <input type="radio" name="sh" value="<?=$value['id'];?>">
+                        <input type="radio" name="sh" value="<?=$value['id'];?>" <?=($value['sh']==1)?"checked":"";?>>
                     </td>
                     <td width="7%">
                         <input type="checkbox" name="del[]" id="<?=$value['id'];?>">    
-
                     </td>
-                    <td></td>
+                    <td>
+                        <input type="button"  value="更新圖片">
+                    </td>
+                    <input type="hidden" name="id[]" value="<?=$value['id'];?>">
                 </tr>
                 <?php
                 }
