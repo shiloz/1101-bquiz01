@@ -170,7 +170,7 @@ function to($url){
  $Bottom=new DB('bottom');
  $Title=new DB('title');
  $Ad=new DB('ad');
-
+ $Mvim=new DB('mvim');
 
  if(!isset($_SESSION['total'])){
     $total=$Total->find(1);
