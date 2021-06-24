@@ -171,7 +171,8 @@ function to($url){
  $Title=new DB('title');
  $Ad=new DB('ad');
  $Mvim=new DB('mvim');
-
+ $Image=new DB("image");
+ 
  if(!isset($_SESSION['total'])){
     $total=$Total->find(1);
     $total['total']++;
