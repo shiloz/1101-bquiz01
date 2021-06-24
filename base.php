@@ -2,6 +2,9 @@
 session_start();
 date_default_timezone_set("Asia/Taipei");
 //設定後台的抬頭文字
+
+
+
 $ts=[
         "title"=>"網站標題管理",
         "ad"=>"動態文字廣告管理",
@@ -14,16 +17,16 @@ $ts=[
         "menu"=>"選單管理"
     ]; 
 $as=[
-        "title"=>"新增網站標題",
+        "title"=>"新增網站標題圖片",
         "ad"=>"新增動態文字廣告",
         'mvim'=>"新增動畫圖片",
         "image"=>"新增校園映像資料",
         "news"=>"新增最新消息資料",
         "admin"=>"新增管理者帳號",
-        "menu"=>"新增選單"
+        "menu"=>"新增主選單"
     ]; 
 $hs=[
-        "title"=>"網站標題",
+        "title"=>"網站標題圖片",
         "ad"=>"動態文字廣告",
         'mvim'=>"動畫圖片",
         "image"=>"校園映像資料",
@@ -167,5 +170,13 @@ function to($url){
  $Bottom=new DB('bottom');
 
 
+
+
+ if(!isset($_SESSION['total'])){
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['total']=1;
+}
 
 ?>
