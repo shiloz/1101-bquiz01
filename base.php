@@ -169,9 +169,13 @@ function to($url){
  $Total=new DB('total');
  $Bottom=new DB('bottom');
  $Title=new DB('title');
-
-
-
+ $Ad=new DB('ad');
+ $Mvim=new DB('mvim');
+ $Image=new DB("image");
+ $News=new DB("news");
+ $Admin=new DB("admin");
+ $Menu=new DB("menu");
+ 
  if(!isset($_SESSION['total'])){
     $total=$Total->find(1);
     $total['total']++;
