@@ -174,6 +174,7 @@ function to($url){
  $Image=new DB("image");
  $News=new DB("news");
  $Admin=new DB("admin");
+ $Menu=new DB("menu");
  
  if(!isset($_SESSION['total'])){
     $total=$Total->find(1);

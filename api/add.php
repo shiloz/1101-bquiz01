@@ -15,6 +15,10 @@ if(isset($_FILES['img']['tmp_name'])){
             $data['acc']=$_POST['acc'];
             $data['pw']=$_POST['pw'];
         break;
+        case "menu":
+            $data['text']=$_POST['text'];
+            $data['href']=$_POST['href'];
+        break;
         default:
             $data['text']=$_POST['text'];
     }

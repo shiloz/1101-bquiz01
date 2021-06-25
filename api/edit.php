@@ -22,7 +22,12 @@ foreach($ids as $key => $id){
             case 'admin':
                 $row['acc']=$_POST['acc'][$key];
                 $row['pw']=$_POST['pw'][$key];
-            break;    
+            break;
+            case "menu":
+                $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
+                $row['text']=$_POST['text'][$key];
+                $row['href']=$_POST['href'][$key];
+            break;
             default:
                 $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
                 $row['text']=$_POST['text'][$key];
