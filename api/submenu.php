@@ -12,12 +12,20 @@ if(isset($_POST['text2'])){
             $Menu->save($new);
         }
     }
-
 }
 
 //編輯
 if(isset($_POST['text'])){
-
+    foreach ($_POST['id'] as $key => $id) {
+        if(isset($_POST['del']) && in_array($id,$_POST['del'])){
+            $Menu->del($id);
+        }else{
+            $row=$Menu->find($id);
+            $row['text']=$_POST['text'][$key];
+            $row['href']=$_POST['href'][$key];
+            $Menu->save($row);
+        }
+    }
 }
 
 
