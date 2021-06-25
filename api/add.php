@@ -10,7 +10,14 @@ if(isset($_FILES['img']['tmp_name'])){
 
 }
 
-$data['text']=$_POST['text'];
+    switch($_POST['table']){
+        case "admin":
+            $data['acc']=$_POST['acc'];
+            $data['pw']=$_POST['pw'];
+        break;
+        default:
+            $data['text']=$_POST['text'];
+    }
 
 $db->save($data);
 

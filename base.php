@@ -173,6 +173,7 @@ function to($url){
  $Mvim=new DB('mvim');
  $Image=new DB("image");
  $News=new DB("news");
+ $Admin=new DB("admin");
  
  if(!isset($_SESSION['total'])){
     $total=$Total->find(1);
