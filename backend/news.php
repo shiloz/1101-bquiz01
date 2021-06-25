@@ -12,7 +12,12 @@
 
                 <?php
 
-$rows=$News->all();
+$all=$News->count();
+$div=5;
+$pages= ceil($all/$div);
+$now=isset($_GET['p'])?$_GET['p']:1;
+$start=($now-1)*$div;
+$rows=$News->all(" limit $start,$div");
 foreach ($rows as $key => $value) {
 ?>
 <tr>
@@ -34,6 +39,24 @@ foreach ($rows as $key => $value) {
 ?>
             </tbody>
         </table>
+        <div class="cent">
+        <?php
+            if(($now-1)>0){
+                echo "<a href='?do=news&p=".($now-1)."'> < </a>";
+            }
+
+            for($i=1;$i<=$pages;$i++){
+                $fontsize=($now==$i)?'24px':'16px';
+                echo "<a href='?do=news&p=$i' style='font-size:$fontsize'> $i </a>";
+            }
+
+            if(($now+1)<=$pages){
+                echo "<a href='?do=news&p=".($now+1)."'> > </a>";
+            }
+
+        ?>
+        </div>
+
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
