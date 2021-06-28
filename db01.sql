@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-06-25 16:26:11
+-- 產生時間： 2021-06-28 16:43:03
 -- 伺服器版本： 10.4.18-MariaDB
 -- PHP 版本： 7.3.27
 
@@ -39,9 +39,9 @@ CREATE TABLE `ad` (
 --
 
 INSERT INTO `ad` (`id`, `img`, `text`, `sh`) VALUES
-(1, '', '轉知臺北教育大學與臺灣師大合辦第11屆麋研齋全國硬筆書法比賽活動123', 0),
+(1, '', '轉知臺北教育大學與臺灣師大合辦第11屆麋研齋全國硬筆書法比賽活動123', 1),
 (3, '', '轉知2012年全國青年水墨創作大賽活動567', 0),
-(5, '', '轉知:教育是人類升沉的樞紐-2013教師生命成長營999', 1);
+(5, '', '轉知:教育是人類升沉的樞紐-2013教師生命成長營999', 0);
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,8 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `acc`, `pw`) VALUES
 (1, 'root', '1234'),
-(2, 'super', '12345678');
+(2, 'super', '12345678'),
+(4, 'admin', '1234');
 
 -- --------------------------------------------------------
 
@@ -102,10 +103,10 @@ INSERT INTO `image` (`id`, `img`, `text`, `sh`) VALUES
 (1, '01D08.jpg', '', 1),
 (3, '01D03.jpg', '', 1),
 (5, '01D10.jpg', '', 1),
-(6, '01D06.jpg', '', 0),
-(7, '01D07.jpg', '', 0),
-(8, '01D08.jpg', '', 0),
-(9, '01D05.jpg', '', 0);
+(6, '01D06.jpg', '', 1),
+(7, '01D07.jpg', '', 1),
+(8, '01D08.jpg', '', 1),
+(9, '01D05.jpg', '', 1);
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,7 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id`, `text`, `href`, `parent`, `sh`) VALUES
 (1, '管理登入', 'index.php?do=login', 0, 1),
 (2, '網站首頁', 'index.php', 0, 1),
-(3, '3C', 'index.php?do=3c', 0, 0),
+(3, '3C', 'index.php?do=3c', 0, 1),
 (5, '網站地圖', 'index.php?do=map', 1, 1),
 (6, '聯絡方式', 'index.php?do=contact', 1, 1),
 (8, '明天放假', '999', 2, 1),
@@ -154,9 +155,10 @@ CREATE TABLE `mvim` (
 --
 
 INSERT INTO `mvim` (`id`, `img`, `text`, `sh`) VALUES
-(1, '01D08.jpg', '', 0),
+(1, '01D08.jpg', '', 1),
 (3, '01C05.gif', '', 1),
-(5, '01C03.gif', '', 1);
+(5, '01C03.gif', '', 1),
+(6, '01C04.gif', '', 1);
 
 -- --------------------------------------------------------
 
@@ -176,12 +178,13 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `img`, `text`, `sh`) VALUES
-(1, '', '教師研習「世界公民生命園丁國內研習會」\r\n1.主辦單位：世界展望會\r\n2.研習日期：101年11月14日（三）～15日（四）\r\n3.詳情請參考：\r\nhttp://gc.worldvision.org.tw/seed.html。\r\n請線上報名。', 0),
+(1, '', '教師研習「世界公民生命園丁國內研習會」\r\n1.主辦單位：世界展望會\r\n2.研習日期：101年11月14日（三）～15日（四）\r\n3.詳情請參考：\r\nhttp://gc.worldvision.org.tw/seed.html。\r\n請線上報名。', 1),
 (4, '', '台視百萬大明星節目辦理海選活動\r\n時間:101年10月27日下午13時\r\n地點:彰化', 1),
 (5, '', '11月23日(星期五)將於彰化縣田尾鄉菁芳園休閒農場\r\n舉辦「高中職生涯輔導知能研習」\r\n中區學校每校至多2名\r\n以普通科、專業類科教師優先報名參加\r\n生涯規劃教師次之，參加人員公差假\r\n並核實派代課\r\n當天還有專車接送(8:35前在員林火車站集合)\r\n如此好康的機會，怎能錯過？！\r\n熱烈邀請師長們向輔導室(分機234)報名\r\n名額有限，動作要快！！\r\n報名截止日期：本周四 10月25日17:00前！', 1),
 (6, '', '國立故宮博物院辦理\r\n「商王武丁與后婦好 殷商盛世文化藝術特展」暨\r\n「赫赫宗周 西周文化特展」\r\n', 1),
-(11, '', 'dfdsfsdaf', 0),
-(12, '', 'dfsdafsdaf', 0);
+(11, '', 'dfdsfsdaf', 1),
+(12, '', 'dfsdafsdaf', 1),
+(13, '', 'dfsdfsdfsdfsdfsd', 1);
 
 -- --------------------------------------------------------
 
@@ -201,9 +204,9 @@ CREATE TABLE `title` (
 --
 
 INSERT INTO `title` (`id`, `img`, `text`, `sh`) VALUES
-(5, '01B04.jpg', '科技大學資訊系統', 0),
+(5, '01B04.jpg', '新莊大學資訊系統', 1),
 (7, '01B01.jpg', '測試文字能不能改', 0),
-(9, '01B03.jpg', '尸木火日尸', 1);
+(9, '01B03.jpg', '尸木火日尸', 0);
 
 -- --------------------------------------------------------
 
@@ -221,7 +224,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 1047);
+(1, 1048);
 
 --
 -- 已傾印資料表的索引
@@ -295,7 +298,7 @@ ALTER TABLE `ad`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `bottom`
@@ -319,13 +322,13 @@ ALTER TABLE `menu`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
 --
 ALTER TABLE `mvim`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `title`
