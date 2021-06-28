@@ -96,6 +96,16 @@ body
 	background:url(../icon/menu4.fw.png) center no-repeat;
 	background-size:cover;
 }
+
+.mw{
+	display:none;
+	position:absolute;
+	width:80%;
+	z-index:99;
+	left:150px;
+	top:20px;
+}
+
 #lf
 {
 	height:540px;
