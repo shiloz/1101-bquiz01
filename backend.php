@@ -35,10 +35,11 @@
     </div>
 
     <div id="main">
-        <a title="" href="?">
-            <div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div>
-            <!--標題-->
-        </a>
+    <a title="<?=$Title->find(['sh'=>1])['text'];?>" href="index.php" alt="">
+        <div class="ti" style="background:url(&#39;img/<?=$Title->find(['sh'=>1])['img'];?>&#39;); background-size:cover;">
+        </div>
+    <!--標題-->
+    </a>
         <div id="ms">
             <div id="lf" style="float:left;">
                 <div id="menuput" class="dbor">
@@ -87,7 +88,7 @@
                             <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;"
                                 class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
                             </td>
-                            <td><button onclick="location.replace(&#39;index.php?do=login&#39;)"
+                            <td><button onclick="location.replace(&#39;../api/logout.php&#39;)"
                                     style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                         </tr>
                     </tbody>
